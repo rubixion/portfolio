@@ -6,9 +6,10 @@ A one-page index of my projects. Click a card to see the details and a link to t
 
 | Project | What it is | Link |
 |---|---|---|
-| Shaula | 3D star map with real exoplanet systems | [rubixion.github.io/shaula](https://rubixion.github.io/shaula/) |
-| Molecular Geometry Calculator | 3D molecule viewer with VSEPR geometry | [rubixion.github.io/molecular-geometry-calculator](https://rubixion.github.io/molecular-geometry-calculator/) |
 | OllieML | Celebrity lookalike finder | [ollieml.com](https://www.ollieml.com/) |
+| Shaula | 3D star map with real exoplanet systems | [rubixion.github.io/shaula](https://rubixion.github.io/shaula/) |
+| MindPortal | Focus companion extension for Chrome | Coming soon |
+| Molecular Geometry Calculator | 3D molecule viewer with VSEPR geometry | [rubixion.github.io/molecular-geometry-calculator](https://rubixion.github.io/molecular-geometry-calculator/) |
 
 ## Editing
 

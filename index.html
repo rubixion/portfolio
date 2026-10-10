@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rubixion | Projects</title>
-  <meta name="description" content="Projects by Rubixion: Shaula, a 3D star map; a molecular geometry calculator; and OllieML, a celebrity lookalike finder.">
+  <meta name="description" content="Projects by Rubixion: OllieML, a celebrity lookalike finder; Shaula, a 3D star map; MindPortal, a focus extension for Chrome; and a molecular geometry calculator.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -74,7 +74,7 @@
   <main>
     <p class="eyebrow">Portfolio</p>
     <h1>Projects</h1>
-    <p class="lead">A few things I've built. There's a 3D map of the night sky, a molecule viewer for chemistry homework, and a face recognition model that finds your celebrity lookalike.</p>
+    <p class="lead">A few things I've built. There's a face recognition model that finds your celebrity lookalike, a 3D map of the night sky, a focus extension for Chrome and a molecule viewer for chemistry homework.</p>
     <div class="grid" id="grid"></div>
   </main>
 
@@ -92,7 +92,20 @@
 
   <script>
     // ponytail: data inline; add a project by adding an object
+    // ponytail: ordered best first
     const projects = [
+      {
+        name: "OllieML",
+        tag: "Machine learning",
+        short: "Upload a photo and find your five closest celebrity lookalikes, ranked by how similar your faces are.",
+        full: [
+          "Ollie turns a face into a 512-number fingerprint using a SphereFaceNet model I trained with CosFace loss. It compares that fingerprint against more than 40,000 photos of over 5,000 celebrities from Wikimedia Commons and returns the closest matches.",
+          "The site also has a face symmetry test, a tool for comparing two faces and an AI stylist. Its tools can be used from Claude and ChatGPT through MCP and app integrations."
+        ],
+        stack: "Custom face model, Next.js, Cloudflare",
+        url: "https://www.ollieml.com/",
+        label: "ollieml.com"
+      },
       {
         name: "Shaula",
         tag: "3D star map",
@@ -107,6 +120,18 @@
         label: "rubixion.github.io/shaula"
       },
       {
+        name: "MindPortal",
+        tag: "Chrome extension",
+        short: "A focus companion for Chrome that tracks your time, nudges you off distracting sites and keeps notes, lists and habits a shortcut away.",
+        full: [
+          "MindPortal adds a floating owl to every page. It shows a Pomodoro timer and live counts of your focused and distracted time, and it opens a panel with tabs for notes, lists, a calendar, habits and saved pages.",
+          "It sorts sites into productive and distracting, and it can warn you, pause you for a few seconds or fully block a site during focus mode. Daily goals, streaks and XP reward progress instead of punishing slip-ups.",
+          "Everything is stored locally in your browser, and nothing is sent to a server."
+        ],
+        stack: "TypeScript, React, Chrome MV3",
+        label: "Coming soon to the Chrome Web Store"
+      },
+      {
         name: "Molecular Geometry Calculator",
         tag: "Chemistry",
         short: "Type a molecule's name or formula and explore its real 3D structure, VSEPR shape and bond angles.",
@@ -118,18 +143,6 @@
         stack: "Three.js (WebGPU), PubChem API, C++",
         url: "https://rubixion.github.io/molecular-geometry-calculator/",
         label: "rubixion.github.io/molecular-geometry-calculator"
-      },
-      {
-        name: "OllieML",
-        tag: "Machine learning",
-        short: "Upload a photo and find your five closest celebrity lookalikes, ranked by how similar your faces are.",
-        full: [
-          "Ollie turns a face into a 512-number fingerprint using a SphereFaceNet model I trained with CosFace loss. It compares that fingerprint against more than 40,000 photos of over 5,000 celebrities from Wikimedia Commons and returns the closest matches.",
-          "The site also has a face symmetry test, a tool for comparing two faces and an AI stylist. Its tools can be used from Claude and ChatGPT through MCP and app integrations."
-        ],
-        stack: "Custom face model, Next.js, Cloudflare",
-        url: "https://www.ollieml.com/",
-        label: "ollieml.com"
       }
     ];
 
@@ -150,7 +163,8 @@
         $("m-name").textContent = p.name;
         $("m-body").replaceChildren(...p.full.map(t => Object.assign(document.createElement("p"), { textContent: t })));
         $("m-stack").textContent = "Built with " + p.stack;
-        $("m-link").href = p.url;
+        $("m-link").href = p.url || "";
+        $("m-link").style.display = p.url ? "" : "none";
         $("m-url").textContent = p.label;
         modal.showModal();
       };
