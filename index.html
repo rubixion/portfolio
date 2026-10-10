@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rubixion — Projects</title>
-  <meta name="description" content="Projects by Rubixion: Shaula, Chemistry Calculator, and OllieML.">
+  <title>Rubixion | Projects</title>
+  <meta name="description" content="Projects by Rubixion: Shaula, a 3D star map; a molecular geometry calculator; and OllieML, a celebrity lookalike finder.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -40,6 +40,8 @@
     .card .tag { color: rgb(255 255 255 / 0.25); font-size: 12px; font-weight: 500; }
     .card h2 { font-size: 20px; font-weight: 900; letter-spacing: -0.02em; }
     .card p { color: rgb(255 255 255 / 0.45); font-size: 13px; line-height: 1.6; flex: 1; }
+    .stack { color: var(--cyan); font-size: 12px; font-weight: 500; }
+    dialog .stack { margin-top: 16px; }
     .card .more { color: rgb(255 255 255 / 0.3); font-size: 12px; font-weight: 600; }
     .card:hover .more { color: rgb(255 255 255 / 0.65); }
 
@@ -72,7 +74,7 @@
   <main>
     <p class="eyebrow">Portfolio</p>
     <h1>Projects</h1>
-    <p class="lead">Things I've built: a 3D star map, a molecule viewer, and a machine-learning face matcher.</p>
+    <p class="lead">A few things I've built. There's a 3D map of the night sky, a molecule viewer for chemistry homework, and a face recognition model that finds your celebrity lookalike.</p>
     <div class="grid" id="grid"></div>
   </main>
 
@@ -81,6 +83,7 @@
     <p class="eyebrow" id="m-tag"></p>
     <h2 id="m-name"></h2>
     <div class="body" id="m-body"></div>
+    <p class="stack" id="m-stack"></p>
     <div class="actions">
       <a class="btn" id="m-link" target="_blank" rel="noopener">Try it out ↗</a>
       <span class="url" id="m-url"></span>
@@ -93,33 +96,38 @@
       {
         name: "Shaula",
         tag: "3D star map",
-        short: "Explore all 88 constellations in 3D and fly into real planetary systems.",
+        short: "Fly through all 88 constellations and into the real planetary systems around nearby stars.",
         full: [
-          "Shaula renders every one of the 88 constellations in an interactive 3D sky. You can search, orbit and zoom, and click any star to fly into its planetary system.",
-          "The planetary systems use every confirmed exoplanet in the NASA Exoplanet Archive."
+          "Shaula is an interactive 3D sky that runs in the browser. It shows every star you can see with the naked eye, along with constellation figures, IAU boundaries and the Milky Way. Click a star to see its details, then click again to fly into its system.",
+          "Each system is built from the NASA Exoplanet Archive, using real orbital elements wherever they are known. Binary and multiple stars use measured orbits from published catalogs, and the Solar System uses positions from JPL Horizons.",
+          "You can search for a constellation (Orion), a star (Betelgeuse), a planet host (TRAPPIST-1) or a single planet (Kepler-22 b)."
         ],
+        stack: "Three.js (WebGPU), Python, NumPy",
         url: "https://rubixion.github.io/shaula/",
         label: "rubixion.github.io/shaula"
       },
       {
-        name: "Chemistry Calculator",
-        tag: "Molecular geometry",
-        short: "Search any molecule and see its real 3D structure, VSEPR geometry and bond angles.",
+        name: "Molecular Geometry Calculator",
+        tag: "Chemistry",
+        short: "Type a molecule's name or formula and explore its real 3D structure, VSEPR shape and bond angles.",
         full: [
-          "This started as a C++ console app that worked out VSEPR geometry and printed bond angles. I rebuilt it as a web viewer that renders the actual 3D structure with Three.js (WebGPU) using data from the PubChem API.",
-          "You can search by name (caffeine, aspirin) or by formula (H₂O, Na₂SO₄). Click any atom to see its element data, bonding, formal charge and hybridisation. Ionic compounds without a PubChem entry get a synthetic structure built from the formula unit."
+          "This started as a C++ console app that parsed chemical formulas and printed VSEPR shapes and bond angles. I rebuilt it as a web app that pulls real structure data from PubChem and renders the molecule in 3D.",
+          "Search by name (caffeine, aspirin) or by formula (H₂O, Na₂SO₄). Each compound gets a summary of its geometry, bond angle, molar mass, polarity and intermolecular forces. Click any atom to see its electronegativity, hybridization, lone pairs and formal charge.",
+          "Ionic compounds that PubChem doesn't have, like Na₂SO₄, are built from the formula unit instead."
         ],
-        url: "https://rubixion.github.io/molecularGeometryCalculator/web/",
-        label: "rubixion.github.io/molecularGeometryCalculator"
+        stack: "Three.js (WebGPU), PubChem API, C++",
+        url: "https://rubixion.github.io/molecular-geometry-calculator/",
+        label: "rubixion.github.io/molecular-geometry-calculator"
       },
       {
         name: "OllieML",
         tag: "Machine learning",
-        short: "Upload a photo and find your five closest celebrity lookalikes.",
+        short: "Upload a photo and find your five closest celebrity lookalikes, ranked by how similar your faces are.",
         full: [
-          "Ollie turns a face into a 512-number fingerprint with a custom SphereFaceNet model trained with CosFace loss. It then compares that fingerprint with more than 40,000 photos of over 5,000 celebrities from Wikimedia Commons.",
-          "The site also has face symmetry tests, face comparisons, an AI stylist, and MCP and ChatGPT plugin integrations."
+          "Ollie turns a face into a 512-number fingerprint using a SphereFaceNet model I trained with CosFace loss. It compares that fingerprint against more than 40,000 photos of over 5,000 celebrities from Wikimedia Commons and returns the closest matches.",
+          "The site also has a face symmetry test, a tool for comparing two faces and an AI stylist. Its tools can be used from Claude and ChatGPT through MCP and app integrations."
         ],
+        stack: "Custom face model, Next.js, Cloudflare",
         url: "https://www.ollieml.com/",
         label: "ollieml.com"
       }
@@ -132,14 +140,16 @@
     projects.forEach(p => {
       const card = document.createElement("button");
       card.className = "card";
-      card.innerHTML = `<span class="tag"></span><h2></h2><p></p><span class="more">Details →</span>`;
+      card.innerHTML = `<span class="tag"></span><h2></h2><p></p><span class="stack"></span><span class="more">Details →</span>`;
       card.querySelector(".tag").textContent = p.tag;
       card.querySelector("h2").textContent = p.name;
       card.querySelector("p").textContent = p.short;
+      card.querySelector(".stack").textContent = p.stack;
       card.onclick = () => {
         $("m-tag").textContent = p.tag;
         $("m-name").textContent = p.name;
         $("m-body").replaceChildren(...p.full.map(t => Object.assign(document.createElement("p"), { textContent: t })));
+        $("m-stack").textContent = "Built with " + p.stack;
         $("m-link").href = p.url;
         $("m-url").textContent = p.label;
         modal.showModal();
