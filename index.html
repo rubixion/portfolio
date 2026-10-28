@@ -107,17 +107,29 @@
         label: "ollieml.com"
       },
       {
-        name: "Shaula",
+        name: "ShaulaOS",
+        tag: "Operating system",
+        short: "An x86-64 operating system written from scratch that runs real Minecraft and Firefox.",
+        full: [
+          "ShaulaOS has its own boot loaders, kernel, drivers, window system, file system, network stack with TLS 1.3, C library and native apps. It boots from BIOS or UEFI into a desktop with overlapping windows, a taskbar and a searchable start menu.",
+          "A Linux compatibility layer in the kernel runs unmodified programs from Alpine Linux, including Minecraft: Java Edition, Firefox, Python and a shell. A separate layer runs 32-bit Windows programs, and DOOM runs natively with sound.",
+          "It also has its own programming language, also called Shaula, with a REPL and a code editor that runs it."
+        ],
+        stack: "C, x86-64 assembly, QEMU",
+        label: "Source on request"
+      },
+      {
+        name: "Antares",
         tag: "3D star map",
         short: "Fly through all 88 constellations and into the real planetary systems around nearby stars.",
         full: [
-          "Shaula is an interactive 3D sky that runs in the browser. It shows every star you can see with the naked eye, along with constellation figures, IAU boundaries and the Milky Way. Click a star to see its details, then click again to fly into its system.",
+          "Antares is an interactive 3D sky that runs in the browser. It shows every star you can see with the naked eye, along with constellation figures, IAU boundaries and the Milky Way. Click a star to see its details, then click again to fly into its system.",
           "Each system is built from the NASA Exoplanet Archive, using real orbital elements wherever they are known. Binary and multiple stars use measured orbits from published catalogs, and the Solar System uses positions from JPL Horizons.",
           "You can search for a constellation (Orion), a star (Betelgeuse), a planet host (TRAPPIST-1) or a single planet (Kepler-22 b)."
         ],
         stack: "Three.js (WebGPU), Python, NumPy",
-        url: "https://rubixion.github.io/shaula/",
-        label: "rubixion.github.io/shaula"
+        url: "https://rubixion.github.io/antares/",
+        label: "rubixion.github.io/antares"
       },
       {
         name: "MindPortal",
@@ -129,7 +141,8 @@
           "Everything is stored locally in your browser, and nothing is sent to a server."
         ],
         stack: "TypeScript, React, Chrome MV3",
-        label: "Coming soon to the Chrome Web Store"
+        url: "https://github.com/Rubixion/mindportal",
+        label: "github.com/Rubixion/mindportal"
       },
       {
         name: "Molecular Geometry Calculator",
